@@ -6,30 +6,25 @@ export function reducer(state, action) {
       const sumVotes = state.totalVotes + 1;
       const newCandidates = state.candidates.map((candidate) => {
         if (candidate.id === action.payload) {
-          return { ...candidate, votes: candidate.votes + 1 };
+          const addVote = candidate.votes + 1;
+          const addPercentage = (addVote * 100) / sumVotes;
+          return {
+            ...candidate,
+            votes: addVote,
+            percentage: addPercentage,
+          };
         }
-        const newPercentage = (candidate.votes * 100) / sumVotes;
-        return { ...candidate, percentage: newPercentage };
+        const addPercentage = (candidate.votes * 100) / sumVotes;
+        return { ...candidate, percentage: addPercentage };
       });
       return { ...state, candidates: newCandidates, totalVotes: sumVotes };
     }
     case NUMERIC_PERCENTAGE: {
-      if (action.payload === false) {
-        const newCandidates = state.candidates.map((candidate) => {
-          const newDisplayVotes = (candidate.votes * 100) / state.totalVotes;
-          return { ...candidate, votes: newDisplayVotes };
-        });
-        return { ...state, candidates: newCandidates };
+      if (action.payload === "percentage") {
+        return { ...state, showResultType: "percentage" };
+      } else if (action.payload === "numeric") {
+        return { ...state, showResultType: "numeric" };
       }
-
-      if (action.payload === true) {
-        const newCandidates = state.candidates.map((candidate) => {
-          const newDisplayVotes = (candidate.votes * state.totalVotes) / 100;
-          return { ...candidate, votes: newDisplayVotes };
-        });
-        return { ...state, candidates: newCandidates };
-      }
-      return state;
     }
   }
 }

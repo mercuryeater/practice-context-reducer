@@ -5,14 +5,6 @@ import { NUMERIC_PERCENTAGE } from "../votes/actionTypes";
 function Filter() {
   const dispatch = useDispatch();
 
-  function handleChangePercentage() {
-    dispatch({ type: NUMERIC_PERCENTAGE, payload: false });
-  }
-
-  function handleChangeNumeric() {
-    dispatch({ type: NUMERIC_PERCENTAGE, payload: true });
-  }
-
   return (
     <>
       <label htmlFor="percentage">percentage</label>
@@ -20,7 +12,9 @@ function Filter() {
         type="radio"
         id="percentage"
         name="filterVotes"
-        onChange={handleChangePercentage}
+        onChange={() =>
+          dispatch({ type: NUMERIC_PERCENTAGE, payload: "percentage" })
+        }
       />
 
       <label htmlFor="numeric">numeric</label>
@@ -29,7 +23,9 @@ function Filter() {
         id="numeric"
         defaultChecked
         name="filterVotes"
-        onChange={handleChangeNumeric}
+        onChange={() =>
+          dispatch({ type: NUMERIC_PERCENTAGE, payload: "numeric" })
+        }
       />
     </>
   );

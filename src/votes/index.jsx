@@ -39,7 +39,7 @@ export function ContextProvider({ children }) {
         percentage: 0,
       },
     ],
-    showResulType: "numeric",
+    showResultType: "numeric",
   };
 
   //se usa el useReducer

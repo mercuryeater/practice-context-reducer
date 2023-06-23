@@ -13,7 +13,6 @@ function Candidates() {
           onClick={() => dispatch({ type: INCREMENT, payload: candidate.id })}
         >
           <h2>{candidate.name}</h2>
-          <h3>Votos: {candidate.votes}</h3>
         </button>
       ))}
     </div>
