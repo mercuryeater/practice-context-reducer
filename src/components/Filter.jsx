@@ -7,26 +7,31 @@ function Filter() {
 
   return (
     <>
-      <label htmlFor="percentage">percentage</label>
-      <input
-        type="radio"
-        id="percentage"
-        name="filterVotes"
-        onChange={() =>
-          dispatch({ type: NUMERIC_PERCENTAGE, payload: "percentage" })
-        }
-      />
+      <h3>RESULTS AS:</h3>
+      <span>
+        <label htmlFor="percentage">Percentage</label>
+        <input
+          type="radio"
+          id="percentage"
+          name="filterVotes"
+          onChange={() =>
+            dispatch({ type: NUMERIC_PERCENTAGE, payload: "percentage" })
+          }
+        />
+      </span>
 
-      <label htmlFor="numeric">numeric</label>
-      <input
-        type="radio"
-        id="numeric"
-        defaultChecked
-        name="filterVotes"
-        onChange={() =>
-          dispatch({ type: NUMERIC_PERCENTAGE, payload: "numeric" })
-        }
-      />
+      <span>
+        <label htmlFor="numeric">Numeric</label>
+        <input
+          type="radio"
+          id="numeric"
+          defaultChecked
+          name="filterVotes"
+          onChange={() =>
+            dispatch({ type: NUMERIC_PERCENTAGE, payload: "numeric" })
+          }
+        />
+      </span>
     </>
   );
 }

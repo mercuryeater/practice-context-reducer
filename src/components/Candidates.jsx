@@ -6,7 +6,7 @@ function Candidates() {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="candidates">
       {state.candidates.map((candidate) => (
         <button
           key={candidate.id}

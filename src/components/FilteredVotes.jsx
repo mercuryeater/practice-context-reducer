@@ -4,10 +4,10 @@ function FilteredVotes() {
   const state = useSelector();
 
   return (
-    <div>
+    <div className="FilteredVotes">
       {state.candidates.map((candidate) => (
         <div key={candidate.id}>
-          <h2>{candidate.name}</h2>
+          <h2>{candidate.name}: </h2>
           {state.showResultType === "percentage" ? (
             <h3>Percentage: {candidate.percentage}%</h3>
           ) : (

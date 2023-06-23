@@ -7,10 +7,18 @@ import "./App.css";
 function App() {
   return (
     <>
-      <Candidates />
-      <Filter />
-      <TotalVotes />
-      <FilteredVotes />
+      <header>
+        <Candidates />
+      </header>
+      <div className="content">
+        <aside>
+          <Filter />
+        </aside>
+        <main>
+          <TotalVotes />
+          <FilteredVotes />
+        </main>
+      </div>
     </>
   );
 }
