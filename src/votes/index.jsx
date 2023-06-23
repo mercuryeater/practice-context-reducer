@@ -13,7 +13,6 @@ export function ContextProvider({ children }) {
   //Estado inicial digamos
   const initialArg = {
     totalVotes: 0,
-    votes: [],
     candidates: [
       {
         id: 1,

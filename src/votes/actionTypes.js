@@ -1,3 +1,2 @@
-export const INCREMENT = "increment";
-export const TOTALNUM = "totalnum";
-export const TOTALPERCENTAGE = "totalnumDAS";
+export const INCREMENT = "@app/increment";
+export const NUMERIC_PERCENTAGE = "@app/numeric-percentage";
