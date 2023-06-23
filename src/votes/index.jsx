@@ -4,7 +4,7 @@ import { createContext, useReducer, useContext } from "react";
 import { reducer } from "./reducer";
 
 //crear contexto
-const appContext = createContext();
+const AppContext = createContext();
 
 //Crear provider
 export function ContextProvider({ children }) {
@@ -35,17 +35,18 @@ export function ContextProvider({ children }) {
         votes: 0,
       },
     ],
+    showResulType: "numeric",
   };
 
   //se usa el useReducer
   const [state, dispatch] = useReducer(reducer, initialArg);
   const data = { state, dispatch };
-  return <appContext.Provider value={data}>{children}</appContext.Provider>;
+  return <AppContext.Provider value={data}>{children}</AppContext.Provider>;
 }
 
 //Vamos a crear el hook que tiene el state, llamado selector por Redux
 export const useSelector = () => {
-  const context = useContext(appContext);
+  const context = useContext(AppContext);
 
   if (!context) {
     throw new Error(`Cannot use outside contextProvider`);
@@ -55,7 +56,7 @@ export const useSelector = () => {
 
 //Creamos el hook que maneja el state, el dispatch
 export const useDispatch = () => {
-  const context = useContext(appContext);
+  const context = useContext(AppContext);
 
   if (!context) {
     throw new Error(`Cannot use outside contextProvider`);
