@@ -3,16 +3,14 @@ import { INCREMENT, NUMERIC_PERCENTAGE } from "./actionTypes";
 export function reducer(state, action) {
   switch (action.type) {
     case INCREMENT: {
+      const sumVotes = state.totalVotes + 1;
       const newCandidates = state.candidates.map((candidate) => {
         if (candidate.id === action.payload) {
           return { ...candidate, votes: candidate.votes + 1 };
         }
-        return candidate;
+        const newPercentage = (candidate.votes * 100) / sumVotes;
+        return { ...candidate, percentage: newPercentage };
       });
-      const sumVotes = newCandidates.reduce(
-        (total, candidate) => total + candidate.votes,
-        0
-      );
       return { ...state, candidates: newCandidates, totalVotes: sumVotes };
     }
     case NUMERIC_PERCENTAGE: {
